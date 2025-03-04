@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>Mayfair Strange</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style.css" type="text/css" rel="stylesheet">
-</head>
-<body>
-<h2>Website in progress!</h2>
-<script src="script.js"></script>
-</body>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="style.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+    <h2>Website in progress!</h2>
+    <script src="script.js" type="module">
+      import init, { greet} from "./pkg/rust_wasm.js";
+      init().then(() => {
+          greet("WebAssembly loaded!");
+      });
+    </script>
+  </body>
 </html>
