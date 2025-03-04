@@ -7,12 +7,36 @@
     <link href="style.css" type="text/css" rel="stylesheet" />
   </head>
   <body>
-    <h2>Website in progress!</h2>
-    <script src="script.js" type="module">
-      import init, { greet} from "./pkg/rust_wasm.js";
-      init().then(() => {
-          greet("WebAssembly loaded!");
-      });
-    </script>
+    <!-- BASE 64 -->
+
+    <section>
+      <h4>Base64 Encoding</h4>
+      <label for="input-base64-encode">Encode</label>
+      <input
+        id="input-base64-encode"
+        name="input-base64-encode"
+        type="text"
+        title="Input text here to encode into base64"
+        placeholder="Type text here to encode.."
+      />
+      <button id="btn-base64-encode" type="button">Encode</button>
+      <br />
+      <textarea id="textarea-base64-encode" readonly></textarea>
+    </section>
+    <section>
+      <h4>Base64 Decoding</h4>
+      <label for="input-base64-decode">Decode</label>
+      <input
+        id="input-base64-decode"
+        name="input-base64-decode"
+        type="text"
+        title="Input text here to decode into base64"
+        placeholder="Type text here to decode.."
+      />
+      <button id="btn-base64-decode" type="button">Decode</button>
+      <br />
+      <textarea id="textarea-base64-decode" readonly></textarea>
+    </section>
+    <script src="script.js" type="module"></script>
   </body>
 </html>

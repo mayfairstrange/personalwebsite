@@ -1,12 +1,3 @@
-node_modules/
 .*
-/build
-/dist
-
-!.dockerignore
-!.editorconfig
-!.env.example
-!.git-blame-ignore-revs
+node_modules/
 !.gitignore
-!.nvmrc
-!.phpcs.xml.dist
