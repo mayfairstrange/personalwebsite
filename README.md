@@ -1,1 +1,2 @@
-# Mayfair Tools
+### Build
+wasm-pack build --target web
