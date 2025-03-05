@@ -1,2 +1,2 @@
-### Build
-wasm-pack build --target web
+### Build (Windows)
+Remove-Item
