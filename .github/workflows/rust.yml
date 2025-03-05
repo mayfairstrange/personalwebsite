@@ -11,7 +11,7 @@ env:
   CARGO_TERM_COLOR: always
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -48,3 +48,29 @@ jobs:
           compression-level: 6
           overwrite: true
           include-hidden-files: false
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false  # Ensures clean checkout for commit
+
+      - name: Download the built WASM artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: wasm-build
+          path: ./pkg  # Place downloaded files into pkg/
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit and Push WASM files
+        run: |
+          git add pkg/
+          git commit -m "Update WASM build artifacts"
+          git push origin main
