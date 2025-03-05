@@ -37,10 +37,16 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+      - name: Upload WASM build artifact
+        uses: actions/upload-artifact@v4.6.1
         with:
+          name: wasm-build
           path: ./pkg
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 6
+          overwrite: true
+          include-hidden-files: false
 
   deploy:
     needs: build
@@ -50,6 +56,12 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
+      - name: Download the artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: wasm-build
+          path: ./pkg
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
